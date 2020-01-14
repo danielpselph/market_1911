@@ -36,8 +36,32 @@ class Market
     sorted_items.uniq.sort
   end
 
+  def total_inventory
+    all_inventory = {}
+    @vendors.each do |vendor|
+      vendor.inventory.each do |ven|
+        # require "pry"; binding.pry
+      all_inventory[ven[0]] = ven[1]
+      # require "pry"; binding.pry
+    end
+    end
+    all_inventory
+  end
+
+  # def total_inventory
+  #   @vendors.reduce(Hash.new) do |result, vendor|
+  #     vendor.each do |item|
+  #       require "pry"; binding.pry
+  #     end
+  #   end
+  # end
+
 end
 
+# inventory[:item] =
+# require "pry"; binding.pry
+# vendor.inventory.each do |item|
+# require "pry"; binding.pry
 # vendor.inventory.find_all {|item| item == item}
 # # require "pry"; binding.pry
 # vendor_items << vendor
