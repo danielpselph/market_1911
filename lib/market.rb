@@ -26,12 +26,21 @@ class Market
     vendor_items
   end
 
-  # vendor.inventory.find_all {|item| item == item}
-  # # require "pry"; binding.pry
-  # vendor_items << vendor
-  # require "pry"; binding.pry
-
-    #find_all {|item| item == item}
-
+  def sorted_item_list
+    sorted_items = []
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item|
+        sorted_items << item[0].name
+      end
+    end
+    sorted_items.uniq.sort
+  end
 
 end
+
+# vendor.inventory.find_all {|item| item == item}
+# # require "pry"; binding.pry
+# vendor_items << vendor
+# require "pry"; binding.pry
+
+#find_all {|item| item == item}
