@@ -48,12 +48,25 @@ class MarketTest < Minitest::Test
     assert_equal expected, @market.vendor_names
   end
 
+  def test_can_return_vendors_that_sell_specific_items
+    @vendor1.stock(@item1, 35)
+    @vendor1.stock(@item2, 7)
+    @vendor2.stock(@item4, 50)
+    @vendor2.stock(@item3, 25)
+    @vendor3.stock(@item1, 65)
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    expected = [@vendor1, @vendor3]
+    assert_equal expected, @market.vendors_that_sell(@item1)
+    expected = [@vendor2]
+    assert_equal expected, @market.vendors_that_sell(@item4)
+  end
+
 end
 
 
-# pry(main)> market.vendor_names
-# #=> ["Rocky Mountain Fresh", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
-#
+
 # pry(main)> market.vendors_that_sell(item1)
 # #=> [#<Vendor:0x00007fe1348a1160...>, #<Vendor:0x00007fe134910650...>]
 #

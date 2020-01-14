@@ -16,4 +16,22 @@ class Market
     end
   end
 
+  def vendors_that_sell(item)
+    vendor_items = []
+    @vendors.each do |vendor|
+      if vendor.inventory.include?(item)
+        vendor_items << vendor
+      end
+    end
+    vendor_items
+  end
+
+  # vendor.inventory.find_all {|item| item == item}
+  # # require "pry"; binding.pry
+  # vendor_items << vendor
+  # require "pry"; binding.pry
+
+    #find_all {|item| item == item}
+
+
 end
